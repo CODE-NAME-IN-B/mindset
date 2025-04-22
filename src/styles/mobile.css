@@ -1,0 +1,166 @@
+/* تحسينات خاصة بالأجهزة المحمولة */
+
+/* قواعد عامة للأجهزة المحمولة */
+@media (max-width: 768px) {
+  html, body {
+    overscroll-behavior-y: none; /* منع التمرير المطاط على iOS */
+    -webkit-tap-highlight-color: transparent; /* إزالة تمييز النقر على الأجهزة المحمولة */
+  }
+  
+  /* تحسين المسافات وحجم النص للأزرار */
+  button, 
+  .button,
+  [role="button"] {
+    min-height: 44px; /* الحد الأدنى لارتفاع الأزرار للنقر بسهولة على الجوال */
+    min-width: 44px; /* الحد الأدنى لعرض الأزرار للنقر بسهولة على الجوال */
+  }
+  
+  /* تحسين العناصر القابلة للنقر */
+  a, 
+  button, 
+  [role="button"],
+  input[type="checkbox"],
+  input[type="radio"] {
+    touch-action: manipulation; /* تحسين الاستجابة للنقر على الأجهزة المحمولة */
+  }
+  
+  /* تحسين عرض الصور في النص */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 10px 0;
+  }
+  
+  /* تحسين عرض المرفقات */
+  .notion-file {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  
+  /* ضمان أن النص مقروء للشاشات الصغيرة */
+  p, li, div {
+    word-break: break-word;
+  }
+  
+  /* ضمان أن الحقول المدخلة سهلة للتفاعل */
+  input, textarea, select {
+    font-size: 16px !important; /* منع تكبير الشاشة عند التركيز في iOS */
+  }
+}
+
+/* تحسين شريط التنقل للأجهزة المحمولة */
+@media (max-width: 768px) {
+  .mobile-nav-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    background-color: white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-top: 1px solid rgba(55, 53, 47, 0.09);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    z-index: 99;
+  }
+  
+  .dark-mode .mobile-nav-bar {
+    background-color: #2f3437;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+  }
+  
+  .mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    color: rgba(55, 53, 47, 0.65);
+  }
+  
+  .dark-mode .mobile-nav-item {
+    color: rgba(255, 255, 255, 0.65);
+  }
+  
+  .mobile-nav-item.active {
+    color: #2383e2;
+  }
+  
+  .dark-mode .mobile-nav-item.active {
+    color: #66b1ff;
+  }
+  
+  .mobile-nav-icon {
+    margin-bottom: 4px;
+  }
+  
+  .mobile-nav-text {
+    font-size: 10px;
+  }
+  
+  /* تأكد من أن المحتوى لا يختفي وراء شريط التنقل */
+  main.with-mobile-nav {
+    padding-bottom: 70px;
+  }
+}
+
+/* تحسينات لعرض لوحة المفاتيح على الأجهزة المحمولة */
+@media (max-width: 768px) {
+  .has-keyboard main {
+    padding-bottom: 240px;
+  }
+  
+  .has-keyboard .mobile-nav-bar {
+    display: none;
+  }
+}
+
+/* تحسينات محددة لنظام iOS */
+@supports (-webkit-touch-callout: none) {
+  .ios-safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .ios-safe-area-top {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+}
+
+/* تحسين عرض المحتوى في وضع النقر (tap-to-edit) */
+@media (max-width: 768px) {
+  .notion-view-mode .notion-block {
+    padding: 8px 0;
+    margin: 4px 0;
+  }
+  
+  .notion-view-mode .notion-block:active {
+    background-color: rgba(55, 53, 47, 0.08);
+  }
+  
+  .dark-mode .notion-view-mode .notion-block:active {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+  
+  /* تحسين مظهر وعرض الصور في المحرر */
+  .w-md-editor-preview img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin: 8px 0;
+  }
+  
+  /* تحسين حجم النص في المحرر للأجهزة الصغيرة */
+  .w-md-editor-text {
+    font-size: 16px;
+  }
+  
+  /* تحسين التفاعل مع أزرار شريط الأدوات */
+  .w-md-editor-toolbar button {
+    min-width: 36px;
+    min-height: 36px;
+    padding: 8px;
+    margin: 2px;
+  }
+} 

@@ -1,0 +1,832 @@
+/* تنسيقات تصميم Notion للملاحظات والأفكار */
+
+/* تنسيقات عامة */
+.notion-style {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji';
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  line-height: 1.5;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark-mode .notion-style {
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+}
+
+/* تنسيقات الصفحة الرئيسية */
+.notion-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 2rem 8rem;
+}
+
+/* تحسين التوافق مع الأجهزة المحمولة */
+@media (max-width: 768px) {
+  .notion-page {
+    padding: 1.5rem 1rem 4rem;
+  }
+
+  .notion-title {
+    font-size: 1.75rem;
+  }
+
+  .notion-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+    width: 80%;
+    max-width: 300px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .notion-sidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+  .sidebar-backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+
+  .sidebar-backdrop.active {
+    display: block;
+  }
+
+  .mobile-sidebar-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #2383e2;
+    color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+    cursor: pointer;
+  }
+
+  .notion-editor-title {
+    font-size: 1.5rem;
+  }
+}
+
+/* تنسيقات العنوان */
+.notion-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  caret-color: var(--text-primary);
+  position: relative;
+}
+
+.dark-mode .notion-title {
+  caret-color: var(--text-primary);
+}
+
+.notion-title:focus {
+  outline: none;
+}
+
+.notion-title::placeholder {
+  color: rgba(var(--text-primary), 0.4);
+}
+
+.dark-mode .notion-title::placeholder {
+  color: rgba(var(--text-primary), 0.4);
+}
+
+/* تنسيقات المحتوى */
+.notion-content {
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 200px;
+}
+
+.notion-block {
+  position: relative;
+  margin: 0.25rem 0;
+  padding: 0.25rem 0;
+}
+
+.notion-block:hover {
+  background-color: rgba(var(--text-primary), 0.03);
+  border-radius: 3px;
+}
+
+.dark-mode .notion-block:hover {
+  background-color: rgba(var(--text-primary), 0.05);
+}
+
+/* تنسيقات القائمة الجانبية */
+.notion-sidebar {
+  width: 240px;
+  background-color: #fbfbfa;
+  border-right: 1px solid rgba(var(--text-primary), 0.09);
+  flex-shrink: 0;
+  overflow-y: auto;
+  padding: 1rem 0;
+}
+
+.dark-mode .notion-sidebar {
+  background-color: #202124;
+  border-right: 1px solid rgba(var(--text-primary), 0.07);
+}
+
+.notion-sidebar-section {
+  margin-bottom: 1.5rem;
+  padding: 0 0.875rem;
+}
+
+.notion-sidebar-section-title {
+  color: rgba(var(--text-primary), 0.65);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+  padding: 0 0.5rem;
+}
+
+.dark-mode .notion-sidebar-section-title {
+  color: rgba(var(--text-primary), 0.5);
+}
+
+.notion-sidebar-item {
+  border-radius: 3px;
+  color: rgba(var(--text-primary), 0.8);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: 1.75rem;
+  margin: 0.125rem 0;
+  padding: 0 0.5rem;
+}
+
+.dark-mode .notion-sidebar-item {
+  color: rgba(var(--text-primary), 0.8);
+}
+
+.notion-sidebar-item:hover {
+  background-color: rgba(var(--text-primary), 0.05);
+}
+
+.dark-mode .notion-sidebar-item:hover {
+  background-color: rgba(var(--text-primary), 0.055);
+}
+
+.notion-sidebar-item.active {
+  background-color: rgba(var(--text-primary), 0.08);
+  font-weight: 500;
+}
+
+.dark-mode .notion-sidebar-item.active {
+  background-color: rgba(var(--text-primary), 0.08);
+}
+
+.notion-sidebar-item-icon {
+  color: rgba(var(--text-primary), 0.8);
+  margin-right: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+}
+
+.dark-mode .notion-sidebar-item-icon {
+  color: rgba(var(--text-primary), 0.8);
+}
+
+.notion-sidebar-item-text {
+  flex-grow: 1;
+  font-size: 0.875rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* تنسيقات قائمة الملاحظات */
+.notion-notes-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.notion-note-item {
+  border-bottom: 1px solid rgba(var(--text-primary), 0.09);
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  transition: background-color 100ms ease-in;
+}
+
+.dark-mode .notion-note-item {
+  border-bottom: 1px solid rgba(var(--text-primary), 0.07);
+}
+
+.notion-note-item:hover {
+  background-color: rgba(var(--text-primary), 0.03);
+}
+
+.dark-mode .notion-note-item:hover {
+  background-color: rgba(var(--text-primary), 0.03);
+}
+
+.notion-note-title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.notion-note-excerpt {
+  color: rgba(var(--text-primary), 0.65);
+  font-size: 0.75rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dark-mode .notion-note-excerpt {
+  color: rgba(var(--text-primary), 0.5);
+}
+
+/* تنسيقات محرر الملاحظات */
+.notion-editor {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 1rem;
+  background-color: var(--bg-primary);
+  min-height: 100vh;
+}
+
+.notion-editor-topbar {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid rgba(var(--text-primary), 0.09);
+}
+
+.dark-mode .notion-editor-topbar {
+  border-bottom: 1px solid rgba(var(--text-primary), 0.07);
+}
+
+.notion-editor-title {
+  width: 100%;
+  border: none;
+  padding: 1rem 0;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: transparent;
+  color: var(--text-primary);
+}
+
+.notion-editor-title:focus {
+  outline: none;
+}
+
+.notion-editor-title::placeholder {
+  color: rgba(var(--text-primary), 0.4);
+}
+
+.dark-mode .notion-editor-title::placeholder {
+  color: rgba(var(--text-primary), 0.4);
+}
+
+.notion-editor-content {
+  color: var(--text-primary);
+}
+
+/* تنسيق صندوق الكتابة بنمط Notion */
+.notion-block-content {
+  width: 100%;
+  padding: 0.25rem 0;
+  border: none;
+  font-size: 1rem;
+  background: transparent;
+  resize: none;
+  overflow: hidden;
+}
+
+.notion-block-content:focus {
+  outline: none;
+}
+
+.notion-block-content::placeholder {
+  color: rgba(var(--text-primary), 0.4);
+}
+
+.dark-mode .notion-block-content::placeholder {
+  color: rgba(var(--text-primary), 0.4);
+}
+
+/* تنسيقات قائمة القوالب */
+.notion-template-menu {
+  position: fixed;
+  z-index: 100;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: rgba(15, 15, 15, 0.05) 0px 0px 0px 1px, rgba(15, 15, 15, 0.1) 0px 3px 6px, rgba(15, 15, 15, 0.2) 0px 9px 24px;
+  padding: 0.5rem 0;
+  width: 200px;
+}
+
+@media (max-width: 768px) {
+  .notion-template-menu {
+    width: 180px;
+  }
+}
+
+.dark-mode .notion-template-menu {
+  background-color: #2f3437;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px, rgba(0, 0, 0, 0.2) 0px 3px 6px, rgba(0, 0, 0, 0.3) 0px 9px 24px;
+}
+
+.notion-template-menu-item {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.notion-template-menu-item:hover {
+  background-color: rgba(var(--text-primary), 0.05);
+}
+
+.dark-mode .notion-template-menu-item:hover {
+  background-color: rgba(var(--text-primary), 0.05);
+}
+
+.notion-template-menu-item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.5rem;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* تنسيقات التحويل - شبيهة بنقطة + Notion */
+.notion-plus-menu {
+  position: absolute;
+  left: -24px;
+  width: 24px;
+  height: 24px;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  color: rgba(var(--text-primary), 0.4);
+  cursor: pointer;
+  transition: opacity 100ms ease-in;
+}
+
+/* تعديل لتسهيل النقر على الأجهزة اللمسية */
+@media (max-width: 768px) {
+  .notion-plus-menu {
+    opacity: 0.6;
+    width: 32px;
+    height: 32px;
+    left: -32px;
+  }
+}
+
+.notion-block:hover .notion-plus-menu {
+  opacity: 1;
+}
+
+.notion-plus-menu:hover {
+  background-color: rgba(var(--text-primary), 0.1);
+  color: rgba(var(--text-primary), 0.8);
+}
+
+.dark-mode .notion-plus-menu {
+  color: rgba(var(--text-primary), 0.4);
+}
+
+.dark-mode .notion-plus-menu:hover {
+  background-color: rgba(var(--text-primary), 0.1);
+  color: rgba(var(--text-primary), 0.8);
+}
+
+/* تنسيقات العلامات */
+.notion-tag {
+  display: inline-flex;
+  align-items: center;
+  background-color: rgba(var(--text-primary), 0.08);
+  color: rgba(var(--text-primary), 0.8);
+  font-size: 0.75rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: 3px;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.dark-mode .notion-tag {
+  background-color: rgba(var(--text-primary), 0.08);
+  color: rgba(var(--text-primary), 0.8);
+}
+
+/* تنسيقات شريط الأدوات */
+.notion-toolbar {
+  position: absolute;
+  z-index: 100;
+  display: flex;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: rgba(15, 15, 15, 0.05) 0px 0px 0px 1px, rgba(15, 15, 15, 0.1) 0px 3px 6px, rgba(15, 15, 15, 0.2) 0px 9px 24px;
+  padding: 0.25rem;
+}
+
+/* تحسين شريط الأدوات للشاشات الصغيرة */
+@media (max-width: 768px) {
+  .notion-toolbar {
+    padding: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: calc(100% - 2rem);
+    left: 1rem !important;
+    right: 1rem !important;
+  }
+  
+  .notion-toolbar-button {
+    margin: 0.25rem;
+  }
+}
+
+.dark-mode .notion-toolbar {
+  background-color: #2f3437;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px, rgba(0, 0, 0, 0.2) 0px 3px 6px, rgba(0, 0, 0, 0.3) 0px 9px 24px;
+}
+
+.notion-toolbar-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 3px;
+  color: rgba(var(--text-primary), 0.8);
+  cursor: pointer;
+}
+
+.dark-mode .notion-toolbar-button {
+  color: rgba(var(--text-primary), 0.8);
+}
+
+.notion-toolbar-button:hover {
+  background-color: rgba(var(--text-primary), 0.08);
+}
+
+.dark-mode .notion-toolbar-button:hover {
+  background-color: rgba(var(--text-primary), 0.08);
+}
+
+/* تنسيقات أنواع الكتل المختلفة */
+.notion-heading-1 {
+  font-size: 1.875rem;
+  line-height: 1.3;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.notion-heading-2 {
+  font-size: 1.5rem;
+  line-height: 1.3;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.notion-heading-3 {
+  font-size: 1.25rem;
+  line-height: 1.3;
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* تعديل أحجام العناوين للشاشات الصغيرة */
+@media (max-width: 768px) {
+  .notion-heading-1 {
+    font-size: 1.5rem;
+  }
+  
+  .notion-heading-2 {
+    font-size: 1.25rem;
+  }
+  
+  .notion-heading-3 {
+    font-size: 1.125rem;
+  }
+}
+
+.notion-callout {
+  padding: 1rem;
+  border-radius: 3px;
+  background-color: rgba(var(--text-primary), 0.6);
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+
+.dark-mode .notion-callout {
+  background-color: rgba(var(--text-primary), 0.6);
+}
+
+.notion-callout-icon {
+  margin-right: 0.75rem;
+}
+
+.notion-callout-content {
+  flex-grow: 1;
+}
+
+.notion-checkbox {
+  display: flex;
+  align-items: flex-start;
+  margin: 0.25rem 0;
+}
+
+/* جعل مربعات الاختيار أكبر على الشاشات اللمسية */
+@media (max-width: 768px) {
+  .notion-checkbox-input {
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+    margin-top: 0.125rem !important;
+  }
+}
+
+.notion-checkbox-input {
+  margin-right: 0.5rem;
+  margin-top: 0.25rem;
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+.notion-checkbox-label {
+  flex-grow: 1;
+}
+
+.notion-checkbox-checked .notion-checkbox-label {
+  text-decoration: line-through;
+  color: rgba(var(--text-primary), 0.6);
+}
+
+.dark-mode .notion-checkbox-checked .notion-checkbox-label {
+  color: rgba(var(--text-primary), 0.6);
+}
+
+.notion-toggle {
+  margin: 0.25rem 0;
+}
+
+.notion-toggle-header {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.notion-toggle-arrow {
+  margin-right: 0.5rem;
+  transition: transform 200ms ease-in-out;
+}
+
+.notion-toggle-content {
+  padding-left: 1.5rem;
+  margin-top: 0.25rem;
+  overflow: hidden;
+}
+
+.notion-toggle.collapsed .notion-toggle-arrow {
+  transform: rotate(-90deg);
+}
+
+.notion-toggle.collapsed .notion-toggle-content {
+  display: none;
+}
+
+/* تنسيقات المرفقات */
+.notion-image-block {
+  max-width: 100%;
+  margin: 0.5rem 0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.notion-image {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: contain;
+  object-position: center;
+}
+
+@media (max-width: 768px) {
+  .notion-image {
+    max-height: 300px;
+  }
+}
+
+.notion-file {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  border-radius: 3px;
+  border: 1px solid rgba(var(--text-primary), 0.16);
+  background-color: rgba(var(--text-primary), 0.02);
+}
+
+.dark-mode .notion-file {
+  border: 1px solid rgba(var(--text-primary), 0.12);
+  background-color: rgba(var(--text-primary), 0.02);
+}
+
+.notion-file-icon {
+  margin-right: 0.75rem;
+}
+
+.notion-file-info {
+  flex-grow: 1;
+}
+
+.notion-file-name {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.notion-file-size {
+  font-size: 0.75rem;
+  color: rgba(var(--text-primary), 0.65);
+}
+
+.dark-mode .notion-file-size {
+  color: rgba(var(--text-primary), 0.5);
+}
+
+/* تنسيقات الإشارة إلى ملاحظات أخرى */
+.notion-mention {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 0.25rem;
+  border-radius: 3px;
+  background-color: rgba(var(--primary-color), 0.14);
+  color: var(--primary-color);
+}
+
+.dark-mode .notion-mention {
+  background-color: rgba(var(--primary-color), 0.2);
+  color: var(--primary-color);
+}
+
+.notion-mention-icon {
+  margin-right: 0.25rem;
+  font-size: 0.875rem;
+}
+
+/* زر العودة متوافق مع الهاتف */
+.mobile-back-button {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-back-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #f5f5f5;
+    color: var(--text-primary);
+    border-radius: 20px;
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 90;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dark-mode .mobile-back-button {
+    background-color: #333;
+    color: var(--text-primary);
+  }
+}
+
+/* Image Styles */
+.notion-image-container {
+  margin: 1.5rem 0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background-color: var(--bg-secondary);
+}
+
+.notion-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  transition: transform 0.2s ease;
+}
+
+.notion-image:hover {
+  transform: scale(1.01);
+}
+
+/* Dark mode image styles */
+.dark .notion-image {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile image styles */
+@media (max-width: 768px) {
+  .notion-image {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .notion-image-container {
+    margin: 1rem 0;
+  }
+}
+
+/* MDEditor overrides */
+.w-md-editor {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 0.5rem !important;
+}
+
+.w-md-editor-text {
+  color: var(--text-primary) !important;
+}
+
+.w-md-editor-preview {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+.wmde-markdown {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-secondary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}
+
+/* Transitions */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* RTL Support */
+[dir="rtl"] .notion-editor {
+  direction: rtl;
+}
+
+[dir="rtl"] .notion-editor-title {
+  text-align: right;
+}
+
+[dir="rtl"] .notion-image-container {
+  direction: ltr;
+} 

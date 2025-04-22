@@ -1,0 +1,46 @@
+/* Firefox-specific CSS optimizations */
+
+/* Better scrollbar styling */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(156, 163, 175, 0.5) transparent;
+}
+
+/* Firefox has issues with color-scheme property in some versions */
+html.firefox.dark {
+  background-color: #1f2937;
+  color-scheme: dark;
+}
+
+html.firefox:not(.dark) {
+  background-color: #f9fafb;
+  color-scheme: light;
+}
+
+/* Fix for focus rings in Firefox */
+html.firefox button:focus,
+html.firefox input:focus,
+html.firefox select:focus,
+html.firefox textarea:focus {
+  outline: 2px solid rgba(79, 70, 229, 0.5);
+  outline-offset: 2px;
+}
+
+/* Fix for RTL layouts in Firefox */
+html.firefox[dir="rtl"] .rtl\:space-x-reverse > * + * {
+  margin-right: 0.5rem;
+  margin-left: 0 !important;
+}
+
+/* Fix for shadows in dark mode in Firefox */
+html.firefox.dark .shadow-lg,
+html.firefox.dark .shadow-md,
+html.firefox.dark .shadow-sm {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Fix for Firefox text rendering in dark mode */
+html.firefox.dark {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+} 
